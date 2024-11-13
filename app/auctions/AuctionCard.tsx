@@ -19,17 +19,19 @@ export default function Auctioncard({auction}: Props) {
           No Image Available
         </div>
         )}
-
+        
+    <div className='absolute bottom-2 left-2'>
+      <CountdownTimer auctionEnd={auction.auctionEnd}/>
       </div>
-      
+      </div>
+         
+  
+
       <div className='flex justify-between items-center mt-4'>
           <h3 className='text-gray-700'>{auction.make} {auction.model} </h3>
           <p className='font-semibold text-sm'>{auction.year}</p>
       </div>
-      <CountdownTimer auctionEnd={auction.auctionEnd}/>
-      <div className='absolute bottom-2 left-2'>
-      
-      </div>
+
 
     </a>
   )
