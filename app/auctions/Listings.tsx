@@ -18,7 +18,9 @@ export default  function Listings() {
     pageSize: state.pageSize,
     searchTerm: state.searchTerm,
     orderBy: state.orderBy,
-    filterBy: state.filterBy
+    filterBy: state.filterBy,
+    seller: state.seller,
+    winner: state.winner
   })));
   
   const setParams = useParamsStore(state => state.setParams);
@@ -37,12 +39,13 @@ export default  function Listings() {
 
     if (!data) return <h3>Loading...</h3>
 
+    console.log("Datooood: "+data.totalCount);
 
   return (  
     <>
       <Filters />
-      {data.totalNumber === 0 ? (
-        <EmptyFilter showReset/>
+      {data.totalCount === 0 ? (
+        <EmptyFilter showReset/> 
       ) : (
         <>
                     <div className='grid grid-cols-4 gap-6'>
