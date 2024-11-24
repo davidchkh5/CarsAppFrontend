@@ -18,6 +18,7 @@ type Props = {
 export default function AuctionForm({ auction }: Props) {
     const router = useRouter();
     const pathName = usePathname();
+    
 
 
     const { control, handleSubmit, setFocus, reset, formState: { isSubmitting, isValid } } = useForm({
@@ -25,6 +26,7 @@ export default function AuctionForm({ auction }: Props) {
     });
 
     useEffect(() => {
+        console.log("Paath : "+pathName);
         if (auction) {
             const { make, model, color, mileage, year } = auction;
             reset({ make, model, color, mileage, year });
@@ -39,6 +41,7 @@ export default function AuctionForm({ auction }: Props) {
             let res;
             if (pathName == '/auctions/create') {
                 res = await createAuction(data);
+                console.log("data  ",data);
                 id = res.id;
             } else {
                 if (auction) {
@@ -56,6 +59,7 @@ export default function AuctionForm({ auction }: Props) {
         }
     }
 
+    
 
     return (
         <form className='flex flex-col mt-3' onSubmit={handleSubmit(onSubmit)}>
@@ -69,7 +73,8 @@ export default function AuctionForm({ auction }: Props) {
                 <Input label='Mileage' name='mileage' control={control} type='number' rules={{ required: 'Mileage is required' }} />
             </div>
 
-            {pathName === 'auction/create' && 
+
+            {pathName === '/auctions/create' && 
             <>
                 <Input label='Image URL' name='imageUrl' control={control} rules={{ required: 'Image URL is required' }} />
 

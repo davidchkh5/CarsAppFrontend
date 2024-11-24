@@ -1,6 +1,8 @@
+'use client';
+
 import { deleteAuction } from '@/app/actions/auctionActions';
 import { Button } from 'flowbite-react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 
